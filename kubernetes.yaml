@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hidoldori-service-a
+  labels:
+    app: hidoldori-service-a
+spec:
+  ports:
+    - port: 8082
+      targetPort: 8082
+  selector:
+    app: hidoldori-service-a
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hidoldori-service-a
+  labels:
+    app: hidoldori-service-a
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hidoldori-service-a
+  template:
+    metadata:
+      labels:
+        app: hidoldori-service-a
+    spec:
+      containers:
+        - name: hidoldori-service-a
+          image: gcr.io/burnished-mark-311301/hidoldori-service-a:0.1
+          ports:
+            - containerPort: 8082
