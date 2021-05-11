@@ -30,6 +30,6 @@ spec:
     spec:
       containers:
         - name: hidoldori-service-a
-          image: gcr.io/burnished-mark-311301/hidoldori-service-a:0.2
-          ports:
+ image: gcr.io/burnished-mark-311301/hidoldori-service-a:0.3
+            ports:
             - containerPort: 8081
