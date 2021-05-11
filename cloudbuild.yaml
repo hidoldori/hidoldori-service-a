@@ -1,0 +1,35 @@
+# [START cloudbuild]
+steps:
+  ### Build
+  - id: 'build'
+    name: 'gcr.io/cloud-builders/mvn'
+    args: [
+      'clean',
+      'package',
+      '-Dmaven.test.skip=true'
+    ]
+  ### docker Build
+  - id: 'docker build'
+    name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/burnished-mark-311301/hidoldori-service-a:0.1'
+      - '.'
+  ### docker push
+  - id: 'push'
+    name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/burnished-mark-311301/hidoldori-service-a:0.1'
+  ### deploy gke
+  - id: 'deploy'
+    name: 'gcr.io/cloud-builders/kubectl'
+    args:
+      - 'apply'
+      - '-f'
+      - 'kubernetes.yaml'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=hidoldori-lab-cicd-cluster'
+# [END cloudbuild-trigger-cd]
