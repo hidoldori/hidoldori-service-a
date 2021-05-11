@@ -6,8 +6,8 @@ metadata:
     app: hidoldori-service-a
 spec:
   ports:
-    - port: 8082
-      targetPort: 8082
+    - port: 8081
+      targetPort: 8081
   selector:
     app: hidoldori-service-a
   type: LoadBalancer
@@ -32,4 +32,4 @@ spec:
         - name: hidoldori-service-a
           image: gcr.io/burnished-mark-311301/hidoldori-service-a:0.1
           ports:
-            - containerPort: 8082
+            - containerPort: 8081
