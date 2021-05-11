@@ -21,7 +21,7 @@ steps:
     name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'gcr.io/burnished-mark-311301/hidoldori-service-a:0.1'
+      - 'gcr.io/burnished-mark-311301/hidoldori-service-a:0.2'
   ### deploy gke
   - id: 'deploy'
     name: 'gcr.io/cloud-builders/kubectl'
