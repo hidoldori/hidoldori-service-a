@@ -14,14 +14,14 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'gcr.io/burnished-mark-311301/hidoldori-service-a:0.5'
+      - 'gcr.io/burnished-mark-311301/hidoldori-service-a:0.6'
       - '.'
   ### docker push
   - id: 'push'
     name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'gcr.io/burnished-mark-311301/hidoldori-service-a:0.5'
+      - 'gcr.io/burnished-mark-311301/hidoldori-service-a:0.6'
   ### deploy gke
   - id: 'deploy'
     name: 'gcr.io/cloud-builders/kubectl'
